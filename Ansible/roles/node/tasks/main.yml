@@ -15,10 +15,10 @@
   - name: Copy React-app folder from S3 to EC2
     ansible.builtin.command: aws s3 cp s3://sujata-pipeline/react-app /home/ubuntu/react-app --recursive
 
-  - name: Install PM2 (Process Manager for Node.js)
+  - name: Install PM2 globally
     ansible.builtin.npm:
       name: pm2
-      path: /home/ubuntu/     
+      global: yes
 
   - name: Install dependencies
     ansible.builtin.npm:
@@ -27,5 +27,5 @@
   - name: Start the react app 
     ansible.builtin.command: pm2 start --name react-app npm -- start
     args:
-      chdir: /home/ubuntu/
-    notify: Restart Nginx  
+      chdir: /home/ubuntu/react-app
+    notify: Restart Nginx
