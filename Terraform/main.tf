@@ -19,7 +19,7 @@ module "ec2" {
     Name = each.value
   }
 }
-# #S3 Bucket
-# resource "aws_s3_bucket" "sujata_pipeline" {
-#     bucket = var.bucket_name  
-# }
+#S3 Bucket
+resource "aws_s3_bucket" "sujata_pipeline" {
+    bucket = var.bucket_name  
+}
