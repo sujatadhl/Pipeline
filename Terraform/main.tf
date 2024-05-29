@@ -12,6 +12,7 @@ module "ec2" {
   iam_role_description = "SSM Role for accessing EC2 instance"
   iam_role_policies = {
     SSM = var.ssm_policy
+    S3 = var.s3_policy
   }
   key_name = try(var.key_name, null)
   tags = {

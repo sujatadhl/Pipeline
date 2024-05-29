@@ -11,7 +11,7 @@ associate_public_ip_address   = true
 create_iam_instance_profile   = true
 key_name                      = "sujata1"
 ssm_policy                    = "arn:aws:iam::aws:policy/AmazonSSMManagedEC2InstanceDefaultPolicy"
-
+s3_policy                     = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
 
 name      = {
    name1= "sujata-ec2"
