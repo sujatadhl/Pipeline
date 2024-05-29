@@ -9,48 +9,4 @@
     ansible_connection: aws_ssm
     ansible_aws_ssm_region: us-east-1
     ansible_aws_ssm_bucket_name: copy-static-website
-
-  # tasks:
-
-  #   - name: Install nginx
-  #     ansible.builtin.apt:
-  #       name: nginx
-  #       state: latest 
-
-  #   - name: Install nodejs and npm
-  #     ansible.builtin.apt:
-  #       name: "{{ item  }}"
-  #       state: latest
-  #     loop:
-  #       - nodejs
-  #       - npm   
-      
-  #   - name: Copy React-app folder from S3 to EC2
-  #     amazon.aws.aws_s3:
-  #         bucket: "sujata-pipeline"
-  #         object: "React-app/"
-  #         dest: "home/ubuntu/app"
-
-  #   - name: Install PM2 (Process Manager for Node.js)
-  #     ansible.builtin.npm:
-  #       name: pm2       
-
-  #   - name: Install dependencies
-  #     ansible.builtin.npm:
-  #       path: /home/ubuntu/app
-
-  #   - name: Start the react app 
-  #     ansible.builtin.command: pm2 start --name "react-app" npm -- start
-  #     args:
-  #       chdir: /home/ubuntu/app/
-
-  #   - name: Change Nginx Configuration file   
-  #     ansible.builtin.template:
-  #       src: nginx.conf.j2
-  #       dest: /etc/nginx/sites-available/default
-
-  # handlers:    
-  #   - name: Restart Nginx
-  #     ansible.builtin.service:
-  #       name: nginx
-  #       state: restarted
+    ansible_aws_ssm_timeout: 3000
