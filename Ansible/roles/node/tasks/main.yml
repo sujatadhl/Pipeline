@@ -1,0 +1,30 @@
+  - name: Install nodejs and npm
+    ansible.builtin.apt:
+      name: "{{ item  }}"
+      state: latest
+    loop:
+      - nodejs
+      - npm   
+  
+  - name: Make folder in EC2 instance
+    file:
+        path: /home/ubuntu/app
+        state: directory
+        mode: '0755'
+       
+  - name: Copy React-app folder from S3 to EC2
+    shell: aws s3 cp s3://sujata-pipeline/React-app /home/ubuntu/app
+
+  - name: Install PM2 (Process Manager for Node.js)
+    ansible.builtin.npm:
+      name: pm2       
+
+  - name: Install dependencies
+    ansible.builtin.npm:
+      path: /home/ubuntu/app
+
+  - name: Start the react app 
+    ansible.builtin.command: pm2 start --name "react-app" npm -- start
+    args:
+      chdir: /home/ubuntu/app/
+    notify: Restart Nginx  
