@@ -32,6 +32,7 @@ jobs:
          
 
     add-to-s3:
+      needs: create-resources
       runs-on: ubuntu-latest
       steps:
         - name: Checkout code
