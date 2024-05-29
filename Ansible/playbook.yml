@@ -17,7 +17,7 @@
 
     - name: Install nodejs and npm
       ansible.builtin.apt:
-        name: "{{ loop }}"
+        name: "{{ item  }}"
         state: latest
       loop:
         - nodejs
