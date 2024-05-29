@@ -9,7 +9,8 @@
     ansible_aws_ssm_bucket_name: copy-static-website
 
   tasks:
-    - name: Install Nginx
+
+    - name: Install nginx
       ansible.builtin.apt:
         name: nginx
       state: latest 

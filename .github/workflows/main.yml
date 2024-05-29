@@ -50,6 +50,7 @@ jobs:
           run: aws s3 sync . s3://sujata-pipeline
 
     configure-ec2:
+      needs: add-to-s3
       runs-on: ubuntu-latest
       steps:
         - name: Checkout code
