@@ -13,7 +13,7 @@
         mode: '0755'
        
   - name: Copy React-app folder from S3 to EC2
-    shell: aws s3 cp s3://sujata-pipeline/React-app /home/ubuntu/app
+    ansible.builtin.command: aws s3 cp s3://sujata-pipeline/React-app /home/ubuntu/app --recursive
 
   - name: Install PM2 (Process Manager for Node.js)
     ansible.builtin.npm:
