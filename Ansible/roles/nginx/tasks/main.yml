@@ -24,7 +24,8 @@
 
   - name: Install botocore and boto3 
     ansible.builtin.pip:
-      name:
+      name: "{{ item }}"
+    loop:  
       - botocore
       - boto3
 
